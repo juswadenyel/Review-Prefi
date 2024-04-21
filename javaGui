@@ -1,0 +1,76 @@
+ Random randomNum = new Random();
+    private int num1, num2;
+    char check;
+
+    public HigherLowerForm() {
+         initComponents();
+        lblsecondnumber.setText("0");
+        randomNum1();
+
+    }
+public void randomNum1(){
+        num1 = randomNum.nextInt(100);
+        num1 += 1;
+        lblfirstnumber.setText(String.valueOf(num1));
+    }
+    
+    public void randomNum2(){
+        num2 = randomNum.nextInt(100);
+        num2 += 1;
+        lblsecondnumber.setText(String.valueOf(num2));
+    }
+    
+  public void Checker(){
+        randomNum2();
+        if(num2>num1 && check == 'H'){
+            JOptionPane.showMessageDialog(null, "You are correct");
+        }
+        else if(num1>num2 && check == 'L'){
+            JOptionPane.showMessageDialog(null, "You are correct");
+        }else{
+            JOptionPane.showMessageDialog(null, "You are Wrong");
+        }
+        randomNum1();
+        btnhigher.setEnabled(false);
+        btnlower.setEnabled(false);
+    }
+
+
+
+
+ private void btnhigherActionPerformed(java.awt.event.ActionEvent evt) {                                          
+        // TODO add your handling code here:
+        check = 'H';
+        Checker();
+
+        
+    }                                         
+    private int generateRandomNumber(int min, int max) {
+    return new Random().nextInt(max - min + 1) + min;
+}
+    
+    private void btnlowerActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+     check = 'L';
+        Checker();
+        btnhigher.setEnabled(true);
+        btnlower.setEnabled(true);
+
+    }                                        
+
+    private void btnresetActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        // TODO add your handling code here:
+        lblsecondnumber.setText("");
+        randomNum1();
+        btnhigher.setEnabled(true);
+        btnlower.setEnabled(true);
+
+        
+    }                                        
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {                                  
+        // TODO add your handling code here:
+        randomNum1();
+        randomNum2();
+        
+    }                                 
